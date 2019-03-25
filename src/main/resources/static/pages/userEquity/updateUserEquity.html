@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<input type="hidden" id="id" name="id">
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>等级名称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equityName' type='text' name='equityName' id='equityName' value='' data-bv-notempty='true' data-bv-notempty-message='等级名称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>分享好友得到的翡翠币数量</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equitySharinggain' type='text' name='equitySharinggain' id='equitySharinggain' value='' data-bv-notempty='true' data-bv-notempty-message='分享好友得到的翡翠币数量 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>注册获得翡翠豆数量</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equityRegister' type='text' name='equityRegister' id='equityRegister' value='' data-bv-notempty='true' data-bv-notempty-message='注册获得翡翠豆数量 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>注册获得代金券金额</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equityCashcoupon' type='text' name='equityCashcoupon' id='equityCashcoupon' value='' data-bv-notempty='true' data-bv-notempty-message='注册获得代金券金额 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>会员购物折扣</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equityDiscount' type='text' name='equityDiscount' id='equityDiscount' value='' data-bv-notempty='true' data-bv-notempty-message='会员购物折扣 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>分享得到毛利百分比</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equityGrossprofitShare' type='text' name='equityGrossprofitShare' id='equityGrossprofitShare' value='' data-bv-notempty='true' data-bv-notempty-message='分享得到毛利百分比 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>间接得到毛利百分比</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equityGrossprofitIndirect' type='text' name='equityGrossprofitIndirect' id='equityGrossprofitIndirect' value='' data-bv-notempty='true' data-bv-notempty-message='间接得到毛利百分比 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>人脉得到毛利百分比</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equityGrossprofitConnection' type='text' name='equityGrossprofitConnection' id='equityGrossprofitConnection' value='' data-bv-notempty='true' data-bv-notempty-message='人脉得到毛利百分比 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>分享得到补贴</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equitySubsidyShare' type='text' name='equitySubsidyShare' id='equitySubsidyShare' value='' data-bv-notempty='true' data-bv-notempty-message='分享得到补贴 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>分享得到补贴平均值</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equitySubsidyShareAverage' type='text' name='equitySubsidyShareAverage' id='equitySubsidyShareAverage' value='' data-bv-notempty='true' data-bv-notempty-message='分享得到补贴平均值 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>间接补贴</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equitySubsidyIndirect' type='text' name='equitySubsidyIndirect' id='equitySubsidyIndirect' value='' data-bv-notempty='true' data-bv-notempty-message='间接补贴 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>人脉补贴</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='equitySubsidyConnection' type='text' name='equitySubsidyConnection' id='equitySubsidyConnection' value='' data-bv-notempty='true' data-bv-notempty-message='人脉补贴 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>翡翠币可用数量</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='quantitativeRestriction' type='text' name='quantitativeRestriction' id='quantitativeRestriction' value='' data-bv-notempty='true' data-bv-notempty-message='翡翠币可用数量 不能为空'>
+				</div>
+			</div>
+
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='userEquityList.html'">返回</button>
+						<button class="btn btn-primary"  onclick="update()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		initData();
+		
+		function initData(){
+			var id = getUrlParam("id");
+			if(id != ""){
+				$.ajax({
+					type : 'get',
+					url : '/userEquitys/'+id,
+					async : false,
+					success : function(data) {
+						$('#id').val(data.id);
+						$('#equityName').val(data.equityName);
+						$('#equitySharinggain').val(data.equitySharinggain);
+						$('#equityRegister').val(data.equityRegister);
+						$('#equityCashcoupon').val(data.equityCashcoupon);
+						$('#equityDiscount').val(data.equityDiscount);
+						$('#equityGrossprofitShare').val(data.equityGrossprofitShare);
+						$('#equityGrossprofitIndirect').val(data.equityGrossprofitIndirect);
+						$('#equityGrossprofitConnection').val(data.equityGrossprofitConnection);
+						$('#equitySubsidyShare').val(data.equitySubsidyShare);
+						$('#equitySubsidyShareAverage').val(data.equitySubsidyShareAverage);
+						$('#equitySubsidyIndirect').val(data.equitySubsidyIndirect);
+						$('#equitySubsidyConnection').val(data.equitySubsidyConnection);
+						$('#quantitativeRestriction').val(data.quantitativeRestriction);
+						$('#createTime').val(data.createTime);
+						$('#updateTime').val(data.updateTime);
+
+					}
+				});
+			}
+		}
+
+		function update() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'put',
+				url : '/userEquitys',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("修改成功", {shift: -1, time: 1000}, function(){
+                        location.href = "userEquityList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>

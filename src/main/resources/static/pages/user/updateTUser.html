@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../../layui/css/layui.css">
+</head>
+<body>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <form class="form-horizontal" onsubmit="return false" id="form">
+            <fieldset>
+                <input type="hidden" id="id" name="id">
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>昵称</label>
+                    <div class='col-md-10'>
+                        <input class='form-control' placeholder='nickName' type='text' name='nickName' id='nickName' value='' data-bv-notempty='true'
+                            data-bv-notempty-message='昵称 不能为空'>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>手机号</label>
+                    <div class='col-md-10'>
+                        <input class='form-control' placeholder='mobile' type='text' name='mobile' id='mobile' value='' data-bv-notempty='true' data-bv-notempty-message='手机号 不能为空'>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>密码</label>
+                    <div class='col-md-10'>
+                        <input class='form-control' placeholder='password' type='text' name='password' id='password' value='' data-bv-notempty='true'
+                            data-bv-notempty-message='密码 不能为空'>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>生日</label>
+                    <div class='col-md-10'>
+                        <input class='form-control' placeholder='birthday' type='text' name='birthday' id='birthday' value='' data-bv-notempty='true'
+                            data-bv-notempty-message='生日 不能为空'>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>性别</label>
+                    <div class='col-md-10'>
+                        <select class='form-control' name='sex' id='sex'>
+                        </select>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>邮箱</label>
+                    <div class='col-md-10'>
+                        <input class='form-control' placeholder='email' type='text' name='email' id='email' value='' data-bv-notempty='true' data-bv-notempty-message='邮箱 不能为空'>
+                    </div>
+                </div>
+
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>会员等级</label>
+                    <div class='col-md-10'>
+                        <select class='form-control' name='equityId' id='equityId'>
+                            <option value="0">注册会员</option>
+                            <option value="1">分享会员</option>
+                            <option value="2">分享会员·升级</option>
+                            <option value="3">集团用户</option>
+                            <option value="4">分享达人</option>
+                            <option value="5">分享大使</option>
+                            <option value="6">众投商</option>
+                        </select>
+                    </div>
+                </div>
+
+               <div class='form-group'>
+                    <label class='col-md-2 control-label'>新手奖励</label>
+                    <div class='col-md-10'>
+                        <select class='form-control' name='noviceAward' id='noviceAward'>
+                            <option value="0">有资格</option>
+                            <option value="1">没有资格</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>福利资格</label>
+                    <div class='col-md-10'>
+                        <select class='form-control' name='welfareStatus' id='welfareStatus'>
+                            <option value="0">有资格</option>
+                            <option value="1">没有资格</option>
+                        </select>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>真实姓名</label>
+                    <div class='col-md-10'>
+                        <input class='form-control' placeholder='name' type='text' name='name' id='name' value=''>
+                    </div>
+                </div>
+                <div class='form-group'>
+                    <label class='col-md-2 control-label'>身份证号</label>
+                    <div class='col-md-10'>
+                        <input class='form-control' placeholder='idCard' type='text' name='idCard' id='idCard' value=''>
+                    </div>
+                </div>
+
+
+
+                <div class="form-actions">
+                    <div class="row" align="center">
+                        <div class="col-md-12">
+                            <button class="btn btn-primary" onclick="location.href='tUserList.html'">返回</button>
+                            <button class="btn btn-primary"  onclick="update()">
+                                <i class="fa fa-save"></i> 保存
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </div>
+    <script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="../../js/jq.js"></script>
+    <script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+    <script type="text/javascript" src="../../js/common.js"></script>
+    <script type="text/javascript" src="../../layui/layui.js"></script>
+    <script type="text/javascript" src="../../js/dict.js"></script>
+    <script type="text/javascript">
+                    layui.use([ 'layer', 'laydate' ], function() {
+                        var layer = layui.layer;
+                        var laydate = layui.laydate;
+                        laydate.render({
+                            elem : '#birthday'
+                        });
+                    });
+
+                    showDictSelect("sex", "sex");
+                </script>
+    <script type="text/javascript">
+                    layui.use([ 'layer', 'laydate' ], function() {
+                        var layer = layui.layer;
+                    });
+
+                    initData();
+
+                    function initData() {
+                        var id = getUrlParam("id");
+                        if (id != "") {
+                            $.ajax({
+                                type : 'get',
+                                url : '/tUsers/' + id,
+                                async : false,
+                                success : function(data) {
+                                    $('#id').val(data.id);
+                                    $('#name').val(data.name);
+                                    $('#nickName').val(data.nickName);
+                                    $('#mobile').val(data.mobile);
+                                    $('#password').val(data.password);
+                                    $('#birthday').val(data.birthday);
+                                    $('#sex').val(data.sex);
+                                    $('#email').val(data.email);
+                                    $('#photoUrl').val(data.photoUrl);
+                                    $('#tencentName').val(data.tencentName);
+                                    $('#tencentId').val(data.tencentId);
+                                    $('#wechatId').val(data.wechatId);
+                                    $('#wechatName').val(data.wechatName);
+                                    $('#wechatPhotourl').val(data.wechatPhotourl);
+                                    $('#sinaId').val(data.sinaId);
+                                    $('#sinaName').val(data.sinaName);
+                                    $('#userCode').val(data.userCode);
+                                    $('#equityId').val(data.equityId);
+                                    $('#lastVisitTime').val(data.lastVisitTime);
+                                    $('#loginDays').val(data.loginDays);
+                                    $('#noviceAward').val(data.noviceAward);
+                                    $('#loginTime').val(data.loginTime);
+                                    $('#idCard').val(data.idCard);
+                                    $('#welfareStatus').val(data.welfareStatus);
+                                    $('#createTime').val(data.createTime);
+
+                                }
+                            });
+                        }
+                    }
+
+                    function update() {
+                        $('#form').bootstrapValidator();
+                        var bootstrapValidator = $("#form").data('bootstrapValidator');
+                        bootstrapValidator.validate();
+                        if (!bootstrapValidator.isValid()) {
+                            return;
+                        }
+
+                        var formdata = $("#form").serializeObject();
+
+                        $.ajax({
+                            type : 'put',
+                            url : '/tUsers',
+                            contentType : "application/json; charset=utf-8",
+                            data : JSON.stringify(formdata),
+                            success : function(data) {
+                                layer.msg("修改成功", {
+                                    shift : -1,
+                                    time : 1000
+                                }, function() {
+                                    location.href = "tUserList.html";
+                                });
+                            }
+                        });
+                    }
+                </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商品ID</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='goodsId' type='text' name='goodsId' id='goodsId' value='' data-bv-notempty='true' data-bv-notempty-message='商品ID 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>一级分类</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='typeId' type='text' name='typeId' id='typeId' value='' data-bv-notempty='true' data-bv-notempty-message='一级分类 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>二级分类</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='typeKindId' type='text' name='typeKindId' id='typeKindId' value='' data-bv-notempty='true' data-bv-notempty-message='二级分类 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>第一个类型</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='firstTypeId' type='text' name='firstTypeId' id='firstTypeId' value='' data-bv-notempty='true' data-bv-notempty-message='第一个类型 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>第二个类型</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='secondTypeId' type='text' name='secondTypeId' id='secondTypeId' value='' data-bv-notempty='true' data-bv-notempty-message='第二个类型 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>第三个类型</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='thirdTypeId' type='text' name='thirdTypeId' id='thirdTypeId' value='' data-bv-notempty='true' data-bv-notempty-message='第三个类型 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>第四个类型</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='forthTypeId' type='text' name='forthTypeId' id='forthTypeId' value='' data-bv-notempty='true' data-bv-notempty-message='第四个类型 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>第五个类型</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='fiveTypeId' type='text' name='fiveTypeId' id='fiveTypeId' value='' data-bv-notempty='true' data-bv-notempty-message='第五个类型 不能为空'>
+				</div>
+			</div>
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='goodsTypeList.html'">返回</button>
+						<button class="btn btn-primary"  onclick="add()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		function add() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'post',
+				url : '/goodsTypes',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("添加成功", {shift: -1, time: 1000}, function(){
+                        location.href = "goodsTypeList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>

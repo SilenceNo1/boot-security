@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<input type="hidden" id="id" name="id">
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>用户ID</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='userId' type='text' name='userId' id='userId' value='' data-bv-notempty='true' data-bv-notempty-message='用户ID 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>直推码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='pushStraight' type='text' name='pushStraight' id='pushStraight' value='' data-bv-notempty='true' data-bv-notempty-message='直推码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>间推码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='pushBetween' type='text' name='pushBetween' id='pushBetween' value='' data-bv-notempty='true' data-bv-notempty-message='间推码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>三推码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='threePush' type='text' name='threePush' id='threePush' value='' data-bv-notempty='true' data-bv-notempty-message='三推码 不能为空'>
+				</div>
+			</div>
+
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='recommendList.html'">返回</button>
+						<button class="btn btn-primary"  onclick="update()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		initData();
+		
+		function initData(){
+			var id = getUrlParam("id");
+			if(id != ""){
+				$.ajax({
+					type : 'get',
+					url : '/recommends/'+id,
+					async : false,
+					success : function(data) {
+						$('#id').val(data.id);
+						$('#userId').val(data.userId);
+						$('#pushStraight').val(data.pushStraight);
+						$('#pushBetween').val(data.pushBetween);
+						$('#threePush').val(data.threePush);
+						$('#createTime').val(data.createTime);
+
+					}
+				});
+			}
+		}
+
+		function update() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'put',
+				url : '/recommends',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("修改成功", {shift: -1, time: 1000}, function(){
+                        location.href = "recommendList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>

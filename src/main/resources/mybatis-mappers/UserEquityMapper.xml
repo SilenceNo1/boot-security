@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.security.server.dao.UserEquityDao">
+
+	<sql id="where">
+		<where>
+			<if test="params.id != null and params.id != ''">
+				and id = #{params.id} 
+			</if>
+			<if test="params.equityName != null and params.equityName != ''">
+				and equity_name = #{params.equityName} 
+			</if>
+			<if test="params.equitySharinggain != null and params.equitySharinggain != ''">
+				and equity_sharinggain = #{params.equitySharinggain} 
+			</if>
+			<if test="params.equityRegister != null and params.equityRegister != ''">
+				and equity_register = #{params.equityRegister} 
+			</if>
+			<if test="params.equityCashcoupon != null and params.equityCashcoupon != ''">
+				and equity_cashcoupon = #{params.equityCashcoupon} 
+			</if>
+			<if test="params.equityDiscount != null and params.equityDiscount != ''">
+				and equity_discount = #{params.equityDiscount} 
+			</if>
+			<if test="params.equityGrossprofitShare != null and params.equityGrossprofitShare != ''">
+				and equity_grossprofit_share = #{params.equityGrossprofitShare} 
+			</if>
+			<if test="params.equityGrossprofitIndirect != null and params.equityGrossprofitIndirect != ''">
+				and equity_grossprofit_indirect = #{params.equityGrossprofitIndirect} 
+			</if>
+			<if test="params.equityGrossprofitConnection != null and params.equityGrossprofitConnection != ''">
+				and equity_grossprofit_connection = #{params.equityGrossprofitConnection} 
+			</if>
+			<if test="params.equitySubsidyShare != null and params.equitySubsidyShare != ''">
+				and equity_subsidy_share = #{params.equitySubsidyShare} 
+			</if>
+			<if test="params.equitySubsidyShareAverage != null and params.equitySubsidyShareAverage != ''">
+				and equity_subsidy_share_average = #{params.equitySubsidyShareAverage} 
+			</if>
+			<if test="params.equitySubsidyIndirect != null and params.equitySubsidyIndirect != ''">
+				and equity_subsidy_indirect = #{params.equitySubsidyIndirect} 
+			</if>
+			<if test="params.equitySubsidyConnection != null and params.equitySubsidyConnection != ''">
+				and equity_subsidy_connection = #{params.equitySubsidyConnection} 
+			</if>
+			<if test="params.quantitativeRestriction != null and params.quantitativeRestriction != ''">
+				and quantitative_restriction = #{params.quantitativeRestriction} 
+			</if>
+			<if test="params.createTime != null and params.createTime != ''">
+				and create_time = #{params.createTime} 
+			</if>
+			<if test="params.updateTime != null and params.updateTime != ''">
+				and update_time = #{params.updateTime} 
+			</if>
+		
+		</where>
+	</sql>
+
+	<select id="count" resultType="int">
+		select count(1) from t_user_equity t
+		<include refid="where" />
+	</select>
+
+	<select id="list" resultType="UserEquity">
+		select * from t_user_equity t
+		<include refid="where" />
+		${params.orderBy}
+		limit #{offset}, #{limit}
+	</select>
+
+	<update id="update">
+		update t_user_equity t
+		<set>
+			<if test="equityName != null">
+				equity_name = #{equityName}, 
+			</if>
+			<if test="equitySharinggain != null">
+				equity_sharinggain = #{equitySharinggain}, 
+			</if>
+			<if test="equityRegister != null">
+				equity_register = #{equityRegister}, 
+			</if>
+			<if test="equityCashcoupon != null">
+				equity_cashcoupon = #{equityCashcoupon}, 
+			</if>
+			<if test="equityDiscount != null">
+				equity_discount = #{equityDiscount}, 
+			</if>
+			<if test="equityGrossprofitShare != null">
+				equity_grossprofit_share = #{equityGrossprofitShare}, 
+			</if>
+			<if test="equityGrossprofitIndirect != null">
+				equity_grossprofit_indirect = #{equityGrossprofitIndirect}, 
+			</if>
+			<if test="equityGrossprofitConnection != null">
+				equity_grossprofit_connection = #{equityGrossprofitConnection}, 
+			</if>
+			<if test="equitySubsidyShare != null">
+				equity_subsidy_share = #{equitySubsidyShare}, 
+			</if>
+			<if test="equitySubsidyShareAverage != null">
+				equity_subsidy_share_average = #{equitySubsidyShareAverage}, 
+			</if>
+			<if test="equitySubsidyIndirect != null">
+				equity_subsidy_indirect = #{equitySubsidyIndirect}, 
+			</if>
+			<if test="equitySubsidyConnection != null">
+				equity_subsidy_connection = #{equitySubsidyConnection}, 
+			</if>
+			<if test="quantitativeRestriction != null">
+				quantitative_restriction = #{quantitativeRestriction}, 
+			</if>
+			<if test="createTime != null">
+				create_time = #{createTime}, 
+			</if>
+			<if test="updateTime != null">
+				update_time = #{updateTime}, 
+			</if>
+
+		</set>
+
+		where t.id = #{id}
+	</update>
+
+</mapper>

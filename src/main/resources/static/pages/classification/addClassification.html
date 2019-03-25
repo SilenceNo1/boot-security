@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../layui/css/layui.css" media="all" >
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<div class='form-group'>
+                <label class='col-md-2 control-label'>类别名称</label>
+                <div class='col-md-10'>
+                    <input class='form-control' placeholder='name' type='text' name='name' id='name' value='' data-bv-notempty='true' data-bv-notempty-message='类别名称 不能为空'>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-md-2 control-label'>类别父级主键</label>
+                <div class='col-md-10'>
+                    <input class='form-control' placeholder='pid' type='text' name='pid' id='pid' value='' data-bv-notempty='true' data-bv-notempty-message='类别父级主键 不能为空'>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-md-2 control-label'>图片地址</label>
+                <div class='col-md-10'>
+                    <input type="hidden"  class='form-control' placeholder='classImageUrl' type='text' name='classImageUrl' id='classImageUrl' value='' data-bv-notempty='true' data-bv-notempty-message='图片地址 不能为空'>
+                  <img style="width: 50px;" id="classImageUrlPlay" alt="商品列表图片" src="">
+                  <button type="button" class="layui-btn" id="classImageUrlFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                  </button>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-md-2 control-label'>是否展示</label>
+                <div class='col-md-10'>
+                    <input class='form-control' placeholder='display' type='text' name='display' id='display' value='0' data-bv-notempty='true' data-bv-notempty-message='是否展示 不能为空'>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label  class='col-md-2 control-label'>大图片地址</label>
+                <div class='col-md-10'>
+                    <input type="hidden"  class='form-control' placeholder='classBigimageUrl' type='text' name='classBigimageUrl' id='classBigimageUrl' value='' data-bv-notempty='true' data-bv-notempty-message='大图片地址 不能为空'>
+                  <img style="width: 200px;" id="classBigimageUrlPlay" alt="商品列表图片" src="">
+                  <button type="button" class="layui-btn" id="classBigimageUrlFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                  </button>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label class='col-md-2 control-label'>分类级别</label>
+                <div class='col-md-10'>
+                    <input class='form-control' placeholder='grade' type='text' name='grade' id='grade' value='' data-bv-notempty='true' data-bv-notempty-message='分类级别 不能为空'>
+                </div>
+            </div>
+            <div class='form-group'>
+                <label  class='col-md-2 control-label'>类别首页展示图片</label>
+                <div class='col-md-10'>
+                    <input type="hidden"   class='form-control' placeholder='classHomeImage' type='text' name='classHomeImage' id='classHomeImage' value='' data-bv-notempty='true' data-bv-notempty-message='类别首页展示图片 不能为空'>
+                  <img style="width: 50px;" id="classHomeImagePlay" alt="商品列表图片" src="">
+                  <button type="button" class="layui-btn" id="classHomeImageFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                  </button>
+                </div>
+            </div>
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='classificationList.html'">返回</button>
+						<button class="btn btn-primary"  onclick="add()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+	layui.use('upload', function(){
+        var upload = layui.upload;
+       
+        //上传图片
+        var uploadInst = upload.render({
+          elem: '#classImageUrlFile' //绑定元素
+          ,url: '/upOssFile/' //上传接口
+          ,data: {
+              path:'classification/image'
+          },
+          accept: 'image',
+          acceptMime:'image/*',
+          before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+              layer.load(); //上传loading
+          }
+          ,done: function(res){
+            //假设code=0代表上传成功
+              if(res.code == 0){
+                //do something （比如将res返回的图片链接保存到表单的隐藏域）
+                $("#classImageUrl").val("https://img.ssw88.com/"+res.url);
+                $('#classImageUrlPlay').attr("src","https://img.ssw88.com/"+res.url);
+              }
+              layer.closeAll('loading'); //关闭loading
+          }
+          ,error: function(){
+              layer.closeAll('loading'); //关闭loading
+          }
+        });
+        
+        //上传图片
+        var uploadInst = upload.render({
+          elem: '#classBigimageUrlFile' //绑定元素
+          ,url: '/upOssFile/' //上传接口
+          ,data: {
+              path:'classification/image'
+          },
+          accept: 'image',
+          acceptMime:'image/*',
+          before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+              layer.load(); //上传loading
+          }
+          ,done: function(res){
+            //假设code=0代表上传成功
+              if(res.code == 0){
+                //do something （比如将res返回的图片链接保存到表单的隐藏域）
+                $("#classBigimageUrl").val("https://img.ssw88.com/"+res.url);
+                $('#classBigimageUrlPlay').attr("src","https://img.ssw88.com/"+res.url);
+              }
+              layer.closeAll('loading'); //关闭loading
+          }
+          ,error: function(){
+              layer.closeAll('loading'); //关闭loading
+          }
+        });
+        
+        //上传图片
+        var uploadInst = upload.render({
+          elem: '#classHomeImageFile' //绑定元素
+          ,url: '/upOssFile/' //上传接口
+          ,data: {
+              path:'classification/image'
+          },
+          accept: 'image',
+          acceptMime:'image/*',
+          before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+              layer.load(); //上传loading
+          }
+          ,done: function(res){
+            //假设code=0代表上传成功
+              if(res.code == 0){
+                //do something （比如将res返回的图片链接保存到表单的隐藏域）
+                $("#classHomeImage").val("https://img.ssw88.com/"+res.url);
+                $('#classHomeImagePlay').attr("src","https://img.ssw88.com/"+res.url);
+              }
+              layer.closeAll('loading'); //关闭loading
+          }
+          ,error: function(){
+              layer.closeAll('loading'); //关闭loading
+          }
+        });
+    });    
+    
+	
+	
+	layui.use('upload', function(){
+        var upload = layui.upload;
+       
+        //上传图片
+        var uploadInst = upload.render({
+          elem: '#listImageUrlFile' //绑定元素
+          ,url: '/upOssFile/' //上传接口
+          ,data: {
+              path:'goods/image'
+          },
+          accept: 'image',
+          acceptMime:'image/*',
+          before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+              layer.load(); //上传loading
+          }
+          ,done: function(res){
+            //假设code=0代表上传成功
+              if(res.code == 0){
+                //do something （比如将res返回的图片链接保存到表单的隐藏域）
+                $("#listImageUrl").val("https://img.ssw88.com/"+res.url);
+                $('#listImageUrlPlay').attr("src","https://img.ssw88.com/"+res.url);
+              }
+              layer.closeAll('loading'); //关闭loading
+          }
+          ,error: function(){
+              layer.closeAll('loading'); //关闭loading
+          }
+        });
+        
+        
+    });   
+	
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		function add() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'post',
+				url : '/classifications',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("添加成功", {shift: -1, time: 1000}, function(){
+                        location.href = "classificationList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>
