@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.security.server.dao.GuowangOrderDao">
+
+	<sql id="where">
+		<where>
+			<if test="params.id != null and params.id != ''">
+				and id = #{params.id} 
+			</if>
+			<if test="params.no != null and params.no != ''">
+				and no = #{params.no} 
+			</if>
+			<if test="params.merchantName != null and params.merchantName != ''">
+				and merchant_name = #{params.merchantName} 
+			</if>
+			<if test="params.shopNo != null and params.shopNo != ''">
+				and shop_no = #{params.shopNo} 
+			</if>
+			<if test="params.shopName != null and params.shopName != ''">
+				and shop_name = #{params.shopName} 
+			</if>
+			<if test="params.buyNo != null and params.buyNo != ''">
+				and buy_no = #{params.buyNo} 
+			</if>
+			<if test="params.orderNo != null and params.orderNo != ''">
+				and order_no = #{params.orderNo} 
+			</if>
+			<if test="params.ERPOrderNo != null and params.ERPOrderNo != ''">
+				and ERP_order_no = #{params.ERPOrderNo} 
+			</if>
+			<if test="params.orderStatus != null and params.orderStatus != ''">
+				and order_status = #{params.orderStatus} 
+			</if>
+			<if test="params.payStatus != null and params.payStatus != ''">
+				and pay_status = #{params.payStatus} 
+			</if>
+			<if test="params.deliveryStatus != null and params.deliveryStatus != ''">
+				and delivery_status = #{params.deliveryStatus} 
+			</if>
+			<if test="params.buyOrderTime != null and params.buyOrderTime != ''">
+				and buy_order_time = #{params.buyOrderTime} 
+			</if>
+			<if test="params.orderCreateTime != null and params.orderCreateTime != ''">
+				and order_create_time = #{params.orderCreateTime} 
+			</if>
+			<if test="params.payTime != null and params.payTime != ''">
+				and pay_time = #{params.payTime} 
+			</if>
+			<if test="params.sendTime != null and params.sendTime != ''">
+				and send_time = #{params.sendTime} 
+			</if>
+			<if test="params.sendReceivedTime != null and params.sendReceivedTime != ''">
+				and send_received_time = #{params.sendReceivedTime} 
+			</if>
+			<if test="params.invoiceTime != null and params.invoiceTime != ''">
+				and invoice_time = #{params.invoiceTime} 
+			</if>
+			<if test="params.invoiceReceivedTime != null and params.invoiceReceivedTime != ''">
+				and invoice_received_time = #{params.invoiceReceivedTime} 
+			</if>
+			<if test="params.receivedConfirm != null and params.receivedConfirm != ''">
+				and received_confirm = #{params.receivedConfirm} 
+			</if>
+			<if test="params.buyer != null and params.buyer != ''">
+				and buyer = #{params.buyer} 
+			</if>
+			<if test="params.buyerPhone != null and params.buyerPhone != ''">
+				and buyer_phone = #{params.buyerPhone} 
+			</if>
+			<if test="params.receiver != null and params.receiver != ''">
+				and receiver = #{params.receiver} 
+			</if>
+			<if test="params.receiverPhone != null and params.receiverPhone != ''">
+				and receiver_phone = #{params.receiverPhone} 
+			</if>
+			<if test="params.companyNo != null and params.companyNo != ''">
+				and company_no = #{params.companyNo} 
+			</if>
+			<if test="params.companyName != null and params.companyName != ''">
+				and company_name = #{params.companyName} 
+			</if>
+			<if test="params.provinceCompanyNo != null and params.provinceCompanyNo != ''">
+				and province_company_no = #{params.provinceCompanyNo} 
+			</if>
+			<if test="params.provinceCompanyName != null and params.provinceCompanyName != ''">
+				and province_company_name = #{params.provinceCompanyName} 
+			</if>
+			<if test="params.provinceNetName != null and params.provinceNetName != ''">
+				and province_net_name = #{params.provinceNetName} 
+			</if>
+			<if test="params.orderType != null and params.orderType != ''">
+				and order_type = #{params.orderType} 
+			</if>
+			<if test="params.factoryName != null and params.factoryName != ''">
+				and factory_name = #{params.factoryName} 
+			</if>
+			<if test="params.receiveAddress != null and params.receiveAddress != ''">
+				and receive_address = #{params.receiveAddress} 
+			</if>
+			<if test="params.orderMessage != null and params.orderMessage != ''">
+				and order_message = #{params.orderMessage} 
+			</if>
+			<if test="params.bak != null and params.bak != ''">
+				and bak = #{params.bak} 
+			</if>
+			<if test="params.orderMoney != null and params.orderMoney != ''">
+				and order_money = #{params.orderMoney} 
+			</if>
+			<if test="params.payMoney != null and params.payMoney != ''">
+				and pay_money = #{params.payMoney} 
+			</if>
+			<if test="params.goodsDeliveryCompany != null and params.goodsDeliveryCompany != ''">
+				and goods_delivery_company = #{params.goodsDeliveryCompany} 
+			</if>
+			<if test="params.deliveryNo != null and params.deliveryNo != ''">
+				and delivery_no = #{params.deliveryNo} 
+			</if>
+			<if test="params.invoiceType != null and params.invoiceType != ''">
+				and invoice_type = #{params.invoiceType} 
+			</if>
+			<if test="params.invoiceTitile != null and params.invoiceTitile != ''">
+				and invoice_titile = #{params.invoiceTitile} 
+			</if>
+			<if test="params.invoiceContent != null and params.invoiceContent != ''">
+				and invoice_content = #{params.invoiceContent} 
+			</if>
+			<if test="params.sendType != null and params.sendType != ''">
+				and send_type = #{params.sendType} 
+			</if>
+			<if test="params.invoiceDeliveryCompany != null and params.invoiceDeliveryCompany != ''">
+				and invoice_delivery_company = #{params.invoiceDeliveryCompany} 
+			</if>
+			<if test="params.invoiceDeliveryNo != null and params.invoiceDeliveryNo != ''">
+				and invoice_delivery_no = #{params.invoiceDeliveryNo} 
+			</if>
+			<if test="params.type != null and params.type != ''">
+				and type = #{params.type} 
+			</if>
+			<if test="params.secendType != null and params.secendType != ''">
+				and secend_type = #{params.secendType} 
+			</if>
+			<if test="params.source != null and params.source != ''">
+				and source = #{params.source} 
+			</if>
+		
+		</where>
+	</sql>
+
+	<select id="count" resultType="int">
+		select count(1) from guowang_order t
+		<include refid="where" />
+	</select>
+
+	<select id="list" resultType="GuowangOrder">
+		select * from guowang_order t
+		<include refid="where" />
+		${params.orderBy}
+		limit #{offset}, #{limit}
+	</select>
+
+	<update id="update">
+		update guowang_order t
+		<set>
+			<if test="no != null">
+				no = #{no}, 
+			</if>
+			<if test="merchantName != null">
+				merchant_name = #{merchantName}, 
+			</if>
+			<if test="shopNo != null">
+				shop_no = #{shopNo}, 
+			</if>
+			<if test="shopName != null">
+				shop_name = #{shopName}, 
+			</if>
+			<if test="buyNo != null">
+				buy_no = #{buyNo}, 
+			</if>
+			<if test="orderNo != null">
+				order_no = #{orderNo}, 
+			</if>
+			<if test="ERPOrderNo != null">
+				ERP_order_no = #{ERPOrderNo}, 
+			</if>
+			<if test="orderStatus != null">
+				order_status = #{orderStatus}, 
+			</if>
+			<if test="payStatus != null">
+				pay_status = #{payStatus}, 
+			</if>
+			<if test="deliveryStatus != null">
+				delivery_status = #{deliveryStatus}, 
+			</if>
+			<if test="buyOrderTime != null">
+				buy_order_time = #{buyOrderTime}, 
+			</if>
+			<if test="orderCreateTime != null">
+				order_create_time = #{orderCreateTime}, 
+			</if>
+			<if test="payTime != null">
+				pay_time = #{payTime}, 
+			</if>
+			<if test="sendTime != null">
+				send_time = #{sendTime}, 
+			</if>
+			<if test="sendReceivedTime != null">
+				send_received_time = #{sendReceivedTime}, 
+			</if>
+			<if test="invoiceTime != null">
+				invoice_time = #{invoiceTime}, 
+			</if>
+			<if test="invoiceReceivedTime != null">
+				invoice_received_time = #{invoiceReceivedTime}, 
+			</if>
+			<if test="receivedConfirm != null">
+				received_confirm = #{receivedConfirm}, 
+			</if>
+			<if test="buyer != null">
+				buyer = #{buyer}, 
+			</if>
+			<if test="buyerPhone != null">
+				buyer_phone = #{buyerPhone}, 
+			</if>
+			<if test="receiver != null">
+				receiver = #{receiver}, 
+			</if>
+			<if test="receiverPhone != null">
+				receiver_phone = #{receiverPhone}, 
+			</if>
+			<if test="companyNo != null">
+				company_no = #{companyNo}, 
+			</if>
+			<if test="companyName != null">
+				company_name = #{companyName}, 
+			</if>
+			<if test="provinceCompanyNo != null">
+				province_company_no = #{provinceCompanyNo}, 
+			</if>
+			<if test="provinceCompanyName != null">
+				province_company_name = #{provinceCompanyName}, 
+			</if>
+			<if test="provinceNetName != null">
+				province_net_name = #{provinceNetName}, 
+			</if>
+			<if test="orderType != null">
+				order_type = #{orderType}, 
+			</if>
+			<if test="factoryName != null">
+				factory_name = #{factoryName}, 
+			</if>
+			<if test="receiveAddress != null">
+				receive_address = #{receiveAddress}, 
+			</if>
+			<if test="orderMessage != null">
+				order_message = #{orderMessage}, 
+			</if>
+			<if test="bak != null">
+				bak = #{bak}, 
+			</if>
+			<if test="orderMoney != null">
+				order_money = #{orderMoney}, 
+			</if>
+			<if test="payMoney != null">
+				pay_money = #{payMoney}, 
+			</if>
+			<if test="goodsDeliveryCompany != null">
+				goods_delivery_company = #{goodsDeliveryCompany}, 
+			</if>
+			<if test="deliveryNo != null">
+				delivery_no = #{deliveryNo}, 
+			</if>
+			<if test="invoiceType != null">
+				invoice_type = #{invoiceType}, 
+			</if>
+			<if test="invoiceTitile != null">
+				invoice_titile = #{invoiceTitile}, 
+			</if>
+			<if test="invoiceContent != null">
+				invoice_content = #{invoiceContent}, 
+			</if>
+			<if test="sendType != null">
+				send_type = #{sendType}, 
+			</if>
+			<if test="invoiceDeliveryCompany != null">
+				invoice_delivery_company = #{invoiceDeliveryCompany}, 
+			</if>
+			<if test="invoiceDeliveryNo != null">
+				invoice_delivery_no = #{invoiceDeliveryNo}, 
+			</if>
+			<if test="type != null">
+				type = #{type}, 
+			</if>
+			<if test="secendType != null">
+				secend_type = #{secendType}, 
+			</if>
+			<if test="source != null">
+				source = #{source}, 
+			</if>
+
+		</set>
+
+		where t.id = #{id}
+	</update>
+
+</mapper>

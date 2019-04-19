@@ -1,0 +1,104 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>全国供应商分布</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="stylesheet" href="../layui/css/layui.css" media="all">
+</head>
+<body>
+
+  <div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+      <div class="layui-col-sm12">
+            
+          <div align="center" id="main" style="width: 600px;height:500px;"></div> 
+      </div>
+    </div>
+  </div>
+
+<script type="text/javascript" src="../js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../layui/layui.js"></script>
+
+<script type="text/javascript" src="../js/libs/extend/echarts.js"></script>
+<script type="text/javascript" src="../js/libs/extend/echartsTheme.js"></script>
+
+  <script>
+  var myChart = echarts.init(document.getElementById('main'));  
+  
+  
+  var option=
+  {
+    title : {
+      text: '全国供应商分布',
+      subtext: '数据来自华岳供应链金融'
+    },
+    tooltip : {
+        trigger: 'item'
+    },
+    dataRange: {
+        orient: 'horizontal',
+        min: 0,
+        max: 500,
+        text:['高','低'],           // 文本，默认为数值文本
+        splitNumber:0
+    },
+    series : [
+      {
+        name: '全国供应商分布',
+        type: 'map',
+        mapType: 'china',
+        mapLocation: {
+            x: 'center'
+        },
+        selectedMode : 'multiple',
+        itemStyle:{
+            normal:{label:{show:true}},
+            emphasis:{label:{show:true}}
+        },
+        data:[
+             {name:'重庆', value:75},
+            {name:'浙江 ', value:614},
+            {name:'云南', value:4},
+            {name:'新疆', value:41},
+            {name:'西藏', value:4},
+            {name:'天津', value:98},
+            {name:'四川', value:154},
+            {name:'上海', value:259},
+            {name:'陕西', value:145},
+            {name:'山西', value:89},
+            {name:'山东', value:470},
+            {name:'青海', value:27},
+            {name:'宁夏', value:19},
+            {name:'内蒙古 ', value:31},
+            {name:'辽宁', value:238},
+            {name:'江西', value:176},
+            {name:'江苏', value:784},
+            {name:'吉林', value:115},
+            {name:'湖南', value:198},
+            {name:'湖北', value:184},
+            {name:'黑龙江', value:42},
+            {name:'河南', value:351},
+            {name:'河北', value:502},
+            {name:'海南', value:2},
+            {name:'贵州', value:2},
+            {name:'广西', value:12},
+            {name:'广东', value:266},
+            {name:'甘肃', value:72},
+            {name:'福建', value:166},
+            {name:'北京', value:635},
+            {name:'安徽', value:196,selected:true}
+        ]
+      }
+    ]
+  };
+  myChart.setOption(option); 
+
+  </script>
+
+</body>
+</html>

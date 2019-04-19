@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商户编号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='no' type='text' name='no' id='no' value='' data-bv-notempty='true' data-bv-notempty-message='商户编号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商户名称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='merchantName' type='text' name='merchantName' id='merchantName' value='' data-bv-notempty='true' data-bv-notempty-message='商户名称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>店铺编号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='shopNo' type='text' name='shopNo' id='shopNo' value='' data-bv-notempty='true' data-bv-notempty-message='店铺编号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>店铺名称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='shopName' type='text' name='shopName' id='shopName' value='' data-bv-notempty='true' data-bv-notempty-message='店铺名称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>请购单编号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='buyNo' type='text' name='buyNo' id='buyNo' value='' data-bv-notempty='true' data-bv-notempty-message='请购单编号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>订单编号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='orderNo' type='text' name='orderNo' id='orderNo' value='' data-bv-notempty='true' data-bv-notempty-message='订单编号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>ERP订单号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='ERPOrderNo' type='text' name='ERPOrderNo' id='ERPOrderNo' value='' data-bv-notempty='true' data-bv-notempty-message='ERP订单号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>订单状态</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='orderStatus' type='text' name='orderStatus' id='orderStatus' value='' data-bv-notempty='true' data-bv-notempty-message='订单状态 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>支付状态</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='payStatus' type='text' name='payStatus' id='payStatus' value='' data-bv-notempty='true' data-bv-notempty-message='支付状态 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>配送状态</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='deliveryStatus' type='text' name='deliveryStatus' id='deliveryStatus' value='' data-bv-notempty='true' data-bv-notempty-message='配送状态 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>请购单生成时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='buyOrderTime' type='text' name='buyOrderTime' id='buyOrderTime' value='' data-bv-notempty='true' data-bv-notempty-message='请购单生成时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>下单时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='orderCreateTime' type='text' name='orderCreateTime' id='orderCreateTime' value='' data-bv-notempty='true' data-bv-notempty-message='下单时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>支付时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='payTime' type='text' name='payTime' id='payTime' value='' data-bv-notempty='true' data-bv-notempty-message='支付时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发货时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='sendTime' type='text' name='sendTime' id='sendTime' value='' data-bv-notempty='true' data-bv-notempty-message='发货时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商品妥投时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='sendReceivedTime' type='text' name='sendReceivedTime' id='sendReceivedTime' value='' data-bv-notempty='true' data-bv-notempty-message='商品妥投时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票申请时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceTime' type='text' name='invoiceTime' id='invoiceTime' value='' data-bv-notempty='true' data-bv-notempty-message='发票申请时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票妥投时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceReceivedTime' type='text' name='invoiceReceivedTime' id='invoiceReceivedTime' value='' data-bv-notempty='true' data-bv-notempty-message='发票妥投时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>确认收货时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='receivedConfirm' type='text' name='receivedConfirm' id='receivedConfirm' value='' data-bv-notempty='true' data-bv-notempty-message='确认收货时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>采购人账号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='buyer' type='text' name='buyer' id='buyer' value='' data-bv-notempty='true' data-bv-notempty-message='采购人账号 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>采购人电话</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='buyerPhone' type='text' name='buyerPhone' id='buyerPhone' value='' data-bv-notempty='true' data-bv-notempty-message='采购人电话 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>收货人姓名</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='receiver' type='text' name='receiver' id='receiver' value='' data-bv-notempty='true' data-bv-notempty-message='收货人姓名 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>收货人电话</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='receiverPhone' type='text' name='receiverPhone' id='receiverPhone' value='' data-bv-notempty='true' data-bv-notempty-message='收货人电话 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>单位编码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='companyNo' type='text' name='companyNo' id='companyNo' value='' data-bv-notempty='true' data-bv-notempty-message='单位编码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>单位名称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='companyName' type='text' name='companyName' id='companyName' value='' data-bv-notempty='true' data-bv-notempty-message='单位名称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>省公司编码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='provinceCompanyNo' type='text' name='provinceCompanyNo' id='provinceCompanyNo' value='' data-bv-notempty='true' data-bv-notempty-message='省公司编码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>省公司名称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='provinceCompanyName' type='text' name='provinceCompanyName' id='provinceCompanyName' value='' data-bv-notempty='true' data-bv-notempty-message='省公司名称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>网省简称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='provinceNetName' type='text' name='provinceNetName' id='provinceNetName' value='' data-bv-notempty='true' data-bv-notempty-message='网省简称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>单据类型</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='orderType' type='text' name='orderType' id='orderType' value='' data-bv-notempty='true' data-bv-notempty-message='单据类型 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>工厂名称</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='factoryName' type='text' name='factoryName' id='factoryName' value='' data-bv-notempty='true' data-bv-notempty-message='工厂名称 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>收货地址</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='receiveAddress' type='text' name='receiveAddress' id='receiveAddress' value='' data-bv-notempty='true' data-bv-notempty-message='收货地址 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>订单留言</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='orderMessage' type='text' name='orderMessage' id='orderMessage' value='' data-bv-notempty='true' data-bv-notempty-message='订单留言 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>备注</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='bak' type='text' name='bak' id='bak' value='' data-bv-notempty='true' data-bv-notempty-message='备注 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>订单金额</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='orderMoney' type='text' name='orderMoney' id='orderMoney' value='' data-bv-notempty='true' data-bv-notempty-message='订单金额 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>应付金额</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='payMoney' type='text' name='payMoney' id='payMoney' value='' data-bv-notempty='true' data-bv-notempty-message='应付金额 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商品物流公司</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='goodsDeliveryCompany' type='text' name='goodsDeliveryCompany' id='goodsDeliveryCompany' value='' data-bv-notempty='true' data-bv-notempty-message='商品物流公司 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>商品运单号码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='deliveryNo' type='text' name='deliveryNo' id='deliveryNo' value='' data-bv-notempty='true' data-bv-notempty-message='商品运单号码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票类型</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceType' type='text' name='invoiceType' id='invoiceType' value='' data-bv-notempty='true' data-bv-notempty-message='发票类型 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票抬头</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceTitile' type='text' name='invoiceTitile' id='invoiceTitile' value='' data-bv-notempty='true' data-bv-notempty-message='发票抬头 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票内容</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceContent' type='text' name='invoiceContent' id='invoiceContent' value='' data-bv-notempty='true' data-bv-notempty-message='发票内容 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发货方式</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='sendType' type='text' name='sendType' id='sendType' value='' data-bv-notempty='true' data-bv-notempty-message='发货方式 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票物流公司</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceDeliveryCompany' type='text' name='invoiceDeliveryCompany' id='invoiceDeliveryCompany' value='' data-bv-notempty='true' data-bv-notempty-message='发票物流公司 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票运单号码</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceDeliveryNo' type='text' name='invoiceDeliveryNo' id='invoiceDeliveryNo' value='' data-bv-notempty='true' data-bv-notempty-message='发票运单号码 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>所属分类</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='type' type='text' name='type' id='type' value='' data-bv-notempty='true' data-bv-notempty-message='所属分类 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>二级分类</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='secendType' type='text' name='secendType' id='secendType' value='' data-bv-notempty='true' data-bv-notempty-message='二级分类 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>渠道来源</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='source' type='text' name='source' id='source' value='' data-bv-notempty='true' data-bv-notempty-message='渠道来源 不能为空'>
+				</div>
+			</div>
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='guowangOrderList.html'">返回</button>
+						<button class="btn btn-primary"  onclick="add()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		function add() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'post',
+				url : '/guowangOrders',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("添加成功", {shift: -1, time: 1000}, function(){
+                        location.href = "guowangOrderList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>
