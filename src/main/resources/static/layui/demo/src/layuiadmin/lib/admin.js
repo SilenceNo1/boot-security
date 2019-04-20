@@ -80,8 +80,8 @@ layui.define('view', function(exports){
         }
         
         admin.req($.extend(true, {
-          url: '/auth/code'
-          ,type: 'get'
+          url: '/sendSms'
+          ,type: 'post'
           ,data: {
             phone: value
           }

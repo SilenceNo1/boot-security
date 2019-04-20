@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<input type="hidden" id="id" name="id">
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>添加时间</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='mesAddtime' type='text' name='mesAddtime' id='mesAddtime' value='' data-bv-notempty='true' data-bv-notempty-message='添加时间 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>messageCOde</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='mesCode' type='text' name='mesCode' id='mesCode' value='' data-bv-notempty='true' data-bv-notempty-message='messageCOde 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>错误信息</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='mesErrorNumber' type='text' name='mesErrorNumber' id='mesErrorNumber' value='' data-bv-notempty='true' data-bv-notempty-message='错误信息 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>失效日期</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='mesExpirytime' type='text' name='mesExpirytime' id='mesExpirytime' value='' data-bv-notempty='true' data-bv-notempty-message='失效日期 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发送手机号</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='mesPhone' type='text' name='mesPhone' id='mesPhone' value='' data-bv-notempty='true' data-bv-notempty-message='发送手机号 不能为空'>
+				</div>
+			</div>
+
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='authMessageVerficationList.html'">返回</button>
+						<button class="btn btn-primary"  onclick="update()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		initData();
+		
+		function initData(){
+			var id = getUrlParam("id");
+			if(id != ""){
+				$.ajax({
+					type : 'get',
+					url : '/authMessageVerfications/'+id,
+					async : false,
+					success : function(data) {
+						$('#id').val(data.id);
+						$('#mesAddtime').val(data.mesAddtime);
+						$('#mesCode').val(data.mesCode);
+						$('#mesErrorNumber').val(data.mesErrorNumber);
+						$('#mesExpirytime').val(data.mesExpirytime);
+						$('#mesPhone').val(data.mesPhone);
+
+					}
+				});
+			}
+		}
+
+		function update() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'put',
+				url : '/authMessageVerfications',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("修改成功", {shift: -1, time: 1000}, function(){
+                        location.href = "authMessageVerficationList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>

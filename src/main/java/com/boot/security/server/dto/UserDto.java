@@ -9,8 +9,18 @@ public class UserDto extends SysUser {
     private static final long serialVersionUID = -184009306207076712L;
 
     private List<Long> roleIds;
+    
+    private String sysCode;
 
-    public List<Long> getRoleIds() {
+    public String getSysCode() {
+		return sysCode;
+	}
+
+	public void setSysCode(String sysCode) {
+		this.sysCode = sysCode;
+	}
+
+	public List<Long> getRoleIds() {
         return roleIds;
     }
 

@@ -6,6 +6,10 @@
  @License：GPL-2
  
  */
+body{
+    background:url(/img/login/bg.png) no-repeat center;
+    background-size: cover;
+}
  
 html,body,#LAY_app{height:100%;}
 .layui-layout-body{overflow: auto;}

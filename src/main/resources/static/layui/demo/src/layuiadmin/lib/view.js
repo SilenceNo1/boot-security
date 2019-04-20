@@ -101,13 +101,13 @@ layui.define(['laytpl', 'layer'], function(exports){
         }
         
         //其它异常
-        else {
-          var error = [
-            '<cite>Error：</cite> ' + (res[response.msgName] || '返回状态码异常')
-            ,debug()
-          ].join('');
-          view.error(error);
-        }
+//        else {
+//          var error = [
+//            '<cite>Error：</cite> ' + (res[response.msgName] || '返回状态码异常')
+//            ,debug()
+//          ].join('');
+//          view.error(error);
+//        }
         
         //只要 http 状态码正常，无论 response 的 code 是否正常都执行 success
         typeof success === 'function' && success(res);
