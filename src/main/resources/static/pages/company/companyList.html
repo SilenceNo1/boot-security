@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/dataTables.bootstrap.min.css">
+<link rel="stylesheet" href="../../layui/css/layui.css" media="all" />
+</head>
+<body>
+    <div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div>
+                <header style="height: 100%">
+                    <div align="left">
+	                    <table style="width: 100%">
+	                   		<tr>
+	                   			<td>
+		                   			<form class="form-inline" onsubmit="return false">
+										<div class="form-group">
+											id：
+											<input id="id" type="text" class="form-control" placeholder="id">
+											<button id="searchBt" class="layui-btn layui-btn-sm"><i class="layui-icon">&#xe615;</i>搜索</button>
+										</div>
+									</form>
+	                   			</td>
+	                   		</tr> 
+	                    </table>
+					</div>
+                </header>
+                
+                <div>
+                    <div class="widget-body no-padding">
+                        <table id="dt-table" class="table table-striped table-bordered table-hover" style="width:100%">
+                            <thead>
+                                <tr>
+                                </tr>                       
+                                <tr>
+									<th>ID</th>
+									<th>用户ID</th>
+									<th>企业名称</th>
+									<th>统一社会信用代码</th>
+									<th>企业办公地址</th>
+									<th>法人姓名</th>
+									<th>法人身份证号码</th>
+									<th>法人联系方式</th>
+									<th>法人银行账户</th>
+									<th>企业收款账户名称</th>
+									<th>收款账号</th>
+									<th>开户行名称</th>
+									<th>法人身份证正面</th>
+									<th>法人身份证反面</th>
+									<th>供应商营业执照(三证合一)</th>
+									<th>开户许可证</th>
+									<th>企业征信报告</th>
+									<th> 法定代表人征信报告</th>
+									<th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="../../js/jq.js"></script>
+<script type="text/javascript" src="../../js/plugin/datatables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../../js/plugin/datatables/dataTables.bootstrap.min.js"></script>
+<script type="text/javascript" src="../../layui/layui.js"></script>
+<script type="text/javascript" src="../../js/my/permission.js"></script>
+<script type="text/javascript">
+var pers = checkPermission();
+
+var example;
+function init(){
+	example = 
+    	$('#dt-table').DataTable({
+        	"searching": false,
+        	"processing": false,
+        	"serverSide" : true,
+        	"language": {
+                "url": "/js/plugin/datatables/Chinese.lang"
+            },
+        	"ajax": {
+        		"url" : "/companys",
+        		"type":"get",
+        		"data":function(d){
+    				d.id = $("#id").val();
+    			}
+        	},
+        	"dom": "<'dt-toolbar'r>t<'dt-toolbar-footer'<'col-sm-10 col-xs-12 hidden-xs'i><'col-xs-12 col-sm-10' p v>>",	
+            "columns": [
+				{"data" : "id", "defaultContent" : ""},
+				{"data" : "userId", "defaultContent" : ""},
+				{"data" : "name", "defaultContent" : ""},
+				{"data" : "no", "defaultContent" : ""},
+				{"data" : "address", "defaultContent" : ""},
+				{"data" : "userName", "defaultContent" : ""},
+				{"data" : "cardNo", "defaultContent" : ""},
+				{"data" : "phone", "defaultContent" : ""},
+				{"data" : "bankNo", "defaultContent" : ""},
+				{"data" : "receiveName", "defaultContent" : ""},
+				{"data" : "receiveNo", "defaultContent" : ""},
+				{"data" : "bankName", "defaultContent" : ""},
+				{"data" : "idFrontImg", "defaultContent" : ""},
+				{"data" : "idBackImg", "defaultContent" : ""},
+				{"data" : "tradingCertificateImg", "defaultContent" : ""},
+				{"data" : "openAccountImg", "defaultContent" : ""},
+				{"data" : "enterpriseCreditImg", "defaultContent" : ""},
+				{"data" : "corporateCreditImg", "defaultContent" : ""},
+				{ 
+								"data": "", 
+								"defaultContent": "",
+								"orderable":false,
+						        "render": function (data, type, row) {
+                		           var id = row['id'];
+                		           var href = "updateCompany.html?id=" + id;
+                                   var edit = buttonEdit(href, "", pers);
+                		           var del = buttonDel(id, "", pers);
+                                   return ;
+                  	            }		
+							},
+                
+            ],
+           "order": [[ 0, "asc" ]]
+        } );
+}
+
+layui.use('layer', function(){
+    var layer = layui.layer;
+});
+
+function del(id){
+	layer.confirm('确定要删除吗？', {
+        btn : [ '确定', '取消' ]
+    }, function() {
+    	$.ajax({
+            type : 'delete',
+            url : '/companys/'+id,
+            success : function(data) {
+                example.ajax.reload();
+                layer.msg("删除成功");
+            }
+        });
+        
+        layer.close(1);
+    });
+}
+
+$("#searchBt").click(function(){
+	example.ajax.reload();
+});
+
+init();
+</script>

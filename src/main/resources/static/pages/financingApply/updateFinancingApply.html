@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+</head>
+<body>
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	<form class="form-horizontal" onsubmit="return false" id="form">
+		<fieldset>
+			<input type="hidden" id="id" name="id">
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>用户ID</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='userId' type='text' name='userId' id='userId' value='' data-bv-notempty='true' data-bv-notempty-message='用户ID 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>企业 ID</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='companyId' type='text' name='companyId' id='companyId' value='' data-bv-notempty='true' data-bv-notempty-message='企业 ID 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>申请金额</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='money' type='text' name='money' id='money' value='' data-bv-notempty='true' data-bv-notempty-message='申请金额 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>融资期限</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='deadline' type='text' name='deadline' id='deadline' value='' data-bv-notempty='true' data-bv-notempty-message='融资期限 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>资金流向</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='flowDirection' type='text' name='flowDirection' id='flowDirection' value='' data-bv-notempty='true' data-bv-notempty-message='资金流向 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>过去一年业务合同</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='serviceCompanyImg' type='text' name='serviceCompanyImg' id='serviceCompanyImg' value='' data-bv-notempty='true' data-bv-notempty-message='过去一年业务合同 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>发票</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='invoiceImg' type='text' name='invoiceImg' id='invoiceImg' value='' data-bv-notempty='true' data-bv-notempty-message='发票 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>银行流水</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='accountStatementImg' type='text' name='accountStatementImg' id='accountStatementImg' value='' data-bv-notempty='true' data-bv-notempty-message='银行流水 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>最近三年审计报告</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='auditReportImg' type='text' name='auditReportImg' id='auditReportImg' value='' data-bv-notempty='true' data-bv-notempty-message='最近三年审计报告 不能为空'>
+				</div>
+			</div>
+			<div class='form-group'>
+				<label class='col-md-2 control-label'>其他资料</label>
+				<div class='col-md-10'>
+					<input class='form-control' placeholder='otherImg' type='text' name='otherImg' id='otherImg' value='' data-bv-notempty='true' data-bv-notempty-message='其他资料 不能为空'>
+				</div>
+			</div>
+
+
+
+			<div class="form-actions">
+				<div class="row" align="center">
+					<div class="col-md-12">
+					    <button class="btn btn-primary" onclick="location.href='financingApplyList.html'">返回</button>
+						<button class="btn btn-primary"  onclick="update()">
+							<i class="fa fa-save"></i> 保存
+						</button>
+					</div>
+				</div>
+			</div>
+
+		</fieldset>
+	</form>
+</div>
+	<script type="text/javascript" src="../../js/libs/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="../../js/jq.js"></script>
+	<script type="text/javascript" src="../../js/plugin/bootstrapvalidator/bootstrapValidator.min.js"></script>
+	<script type="text/javascript" src="../../js/common.js"></script>
+	<script type="text/javascript" src="../../layui/layui.js"></script>
+	<script type="text/javascript">
+		layui.use(['layer','laydate'], function(){
+		    var layer = layui.layer;
+		});
+		
+		initData();
+		
+		function initData(){
+			var id = getUrlParam("id");
+			if(id != ""){
+				$.ajax({
+					type : 'get',
+					url : '/financingApplys/'+id,
+					async : false,
+					success : function(data) {
+						$('#id').val(data.id);
+						$('#userId').val(data.userId);
+						$('#companyId').val(data.companyId);
+						$('#money').val(data.money);
+						$('#deadline').val(data.deadline);
+						$('#flowDirection').val(data.flowDirection);
+						$('#serviceCompanyImg').val(data.serviceCompanyImg);
+						$('#invoiceImg').val(data.invoiceImg);
+						$('#accountStatementImg').val(data.accountStatementImg);
+						$('#auditReportImg').val(data.auditReportImg);
+						$('#otherImg').val(data.otherImg);
+						$('#createTime').val(data.createTime);
+
+					}
+				});
+			}
+		}
+
+		function update() {
+			$('#form').bootstrapValidator();
+			var bootstrapValidator = $("#form").data('bootstrapValidator');
+			bootstrapValidator.validate();
+		    if(!bootstrapValidator.isValid()){
+			   return;
+		    }
+		    
+		    var formdata = $("#form").serializeObject();
+
+			$.ajax({
+				type : 'put',
+				url : '/financingApplys',
+				contentType: "application/json; charset=utf-8",  
+				data : JSON.stringify(formdata),
+				success : function(data) {
+					layer.msg("修改成功", {shift: -1, time: 1000}, function(){
+                        location.href = "financingApplyList.html";
+                    });
+				}
+			});
+		}
+		
+	</script>
+</body>
+</html>

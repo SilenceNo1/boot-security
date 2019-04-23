@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boot.security.server.dao.CompanyDao">
+
+	<sql id="where">
+		<where>
+			<if test="params.id != null and params.id != ''">
+				and id = #{params.id} 
+			</if>
+			<if test="params.userId != null and params.userId != ''">
+				and user_id = #{params.userId} 
+			</if>
+			<if test="params.name != null and params.name != ''">
+				and name = #{params.name} 
+			</if>
+			<if test="params.no != null and params.no != ''">
+				and no = #{params.no} 
+			</if>
+			<if test="params.address != null and params.address != ''">
+				and address = #{params.address} 
+			</if>
+			<if test="params.userName != null and params.userName != ''">
+				and user_name = #{params.userName} 
+			</if>
+			<if test="params.cardNo != null and params.cardNo != ''">
+				and card_no = #{params.cardNo} 
+			</if>
+			<if test="params.phone != null and params.phone != ''">
+				and phone = #{params.phone} 
+			</if>
+			<if test="params.bankNo != null and params.bankNo != ''">
+				and bank_no = #{params.bankNo} 
+			</if>
+			<if test="params.receiveName != null and params.receiveName != ''">
+				and receive_name = #{params.receiveName} 
+			</if>
+			<if test="params.receiveNo != null and params.receiveNo != ''">
+				and receive_no = #{params.receiveNo} 
+			</if>
+			<if test="params.bankName != null and params.bankName != ''">
+				and bank_name = #{params.bankName} 
+			</if>
+			<if test="params.idFrontImg != null and params.idFrontImg != ''">
+				and id_front_img = #{params.idFrontImg} 
+			</if>
+			<if test="params.idBackImg != null and params.idBackImg != ''">
+				and id_back_img = #{params.idBackImg} 
+			</if>
+			<if test="params.tradingCertificateImg != null and params.tradingCertificateImg != ''">
+				and trading_certificate_img = #{params.tradingCertificateImg} 
+			</if>
+			<if test="params.openAccountImg != null and params.openAccountImg != ''">
+				and open_account_img = #{params.openAccountImg} 
+			</if>
+			<if test="params.enterpriseCreditImg != null and params.enterpriseCreditImg != ''">
+				and enterprise_credit_img = #{params.enterpriseCreditImg} 
+			</if>
+			<if test="params.corporateCreditImg != null and params.corporateCreditImg != ''">
+				and corporate_credit_img = #{params.corporateCreditImg} 
+			</if>
+		
+		</where>
+	</sql>
+
+	<select id="count" resultType="int">
+		select count(1) from company t
+		<include refid="where" />
+	</select>
+
+	<select id="list" resultType="Company">
+		select * from company t
+		<include refid="where" />
+		${params.orderBy}
+		limit #{offset}, #{limit}
+	</select>
+
+	<update id="update">
+		update company t
+		<set>
+			<if test="userId != null">
+				user_id = #{userId}, 
+			</if>
+			<if test="name != null">
+				name = #{name}, 
+			</if>
+			<if test="no != null">
+				no = #{no}, 
+			</if>
+			<if test="address != null">
+				address = #{address}, 
+			</if>
+			<if test="userName != null">
+				user_name = #{userName}, 
+			</if>
+			<if test="cardNo != null">
+				card_no = #{cardNo}, 
+			</if>
+			<if test="phone != null">
+				phone = #{phone}, 
+			</if>
+			<if test="bankNo != null">
+				bank_no = #{bankNo}, 
+			</if>
+			<if test="receiveName != null">
+				receive_name = #{receiveName}, 
+			</if>
+			<if test="receiveNo != null">
+				receive_no = #{receiveNo}, 
+			</if>
+			<if test="bankName != null">
+				bank_name = #{bankName}, 
+			</if>
+			<if test="idFrontImg != null">
+				id_front_img = #{idFrontImg}, 
+			</if>
+			<if test="idBackImg != null">
+				id_back_img = #{idBackImg}, 
+			</if>
+			<if test="tradingCertificateImg != null">
+				trading_certificate_img = #{tradingCertificateImg}, 
+			</if>
+			<if test="openAccountImg != null">
+				open_account_img = #{openAccountImg}, 
+			</if>
+			<if test="enterpriseCreditImg != null">
+				enterprise_credit_img = #{enterpriseCreditImg}, 
+			</if>
+			<if test="corporateCreditImg != null">
+				corporate_credit_img = #{corporateCreditImg}, 
+			</if>
+
+		</set>
+
+		where t.id = #{id}
+	</update>
+
+</mapper>
