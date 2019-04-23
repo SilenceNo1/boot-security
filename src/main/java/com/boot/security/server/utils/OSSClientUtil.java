@@ -29,9 +29,9 @@ public class OSSClientUtil {
     public static final Logger logger = LoggerFactory.getLogger(OSSClientUtil.class);
 
     private static String endpoint = "http://oss-cn-beijing.aliyuncs.com";
-    private static String accessKeyId = "LTAIB8GpX0TLFpzN";
-    private static String accessKeySecret = "8Ljz3HLn2PMXReG94KUhn33Xd6OyfZ";
-    private static String bucketName = "shangjewel";
+    private static String accessKeyId = "LTAIkjv72db6mvMw";
+    private static String accessKeySecret = "QwMbudfP6RxGROf0uZiYcN1i0pciGd";
+    private static String bucketName = "huayue-supplychain";
     // 文件存储目录
     private String filedir = "/test/";
 

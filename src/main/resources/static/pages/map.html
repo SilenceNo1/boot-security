@@ -18,6 +18,11 @@
       </div>
        <div class="layui-col-sm6">
           <div align="center" id="main" style="width: 600px;height:500px;"></div> 
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <div align="center" id="main1" style="width: 600px;height:500px;"></div> 
       </div>
       <div class="layui-col-sm3">
       </div>
@@ -100,7 +105,73 @@
     ]
   };
   myChart.setOption(option); 
-
+ 
+  var myChartmain1 = echarts.init(document.getElementById('main1'));  
+  option1 = {
+		    title : {
+		        text: '国网山东省供应商数据',
+		        subtext: '市级数据',
+		        x:'center'
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        formatter: "{a} <br/>{b} : {c} ({d}%)"
+		    },
+		    legend: {
+		        orient : 'vertical',
+		        x : 'left',
+		        data:['淄博市','枣庄市','烟台市','潍坊市','威海市','泰安市','日照市','青岛市','临沂市','济宁市','济南市','菏泽市','东营市','德州市','滨州市','聊城市']
+		    },
+		    toolbox: {
+		        show : true,
+		        feature : {
+		            mark : {show: true},
+		            dataView : {show: true, readOnly: false},
+		            magicType : {
+		                show: true, 
+		                type: ['pie', 'funnel'],
+		                option: {
+		                    funnel: {
+		                        x: '25%',
+		                        width: '50%',
+		                        funnelAlign: 'left',
+		                        max: 1548
+		                    }
+		                }
+		            },
+		            restore : {show: true},
+		            saveAsImage : {show: true}
+		        }
+		    },
+		    calculable : true,
+		    series : [
+		        {
+		            name:'访问来源',
+		            type:'pie',
+		            radius : '55%',
+		            center: ['50%', '60%'],
+		            data:[
+		                {value:25, name:'淄博市'},
+		                {value:4, name:'枣庄市'},
+		                {value:31, name:'烟台市'},
+		                {value:37, name:'潍坊市'},
+		                {value:3, name:'威海市'},
+		                {value:43, name:'泰安市'},
+		                {value:9, name:'日照市'},
+		                {value:61, name:'青岛市'},
+		                {value:17, name:'临沂市'},
+		                {value:37, name:'济宁市'},
+		                {value:105, name:'济南市'},
+		                {value:16, name:'菏泽市'},
+		                {value:7, name:'东营市'},
+		                {value:38, name:'德州市'},
+		                {value:37, name:'滨州市'},
+		                {value:11, name:'聊城市'}
+		            ]
+		        }
+		    ]
+		};
+  myChartmain1.setOption(option1); 	                    
   </script>
 
 </body>

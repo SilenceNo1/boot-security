@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" media="screen" href="../../css/bootstrap.min.css">
+<link rel="stylesheet" href="../../layui/css/layui.css" media="all" >
 </head>
 <body>
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -102,7 +103,12 @@
 			<div class='form-group'>
 				<label class='col-md-2 control-label'> 法定代表人征信报告</label>
 				<div class='col-md-10'>
-					<input class='form-control' placeholder='corporateCreditImg' type='text' name='corporateCreditImg' id='corporateCreditImg' value='' data-bv-notempty='true' data-bv-notempty-message=' 法定代表人征信报告 不能为空'>
+				<input  type="hidden"  class='form-control' placeholder='corporateCreditImg' type='text' name='corporateCreditImg' id='corporateCreditImg' value='' data-bv-notempty='true' data-bv-notempty-message='法定代表人征信报告 不能为空'>
+    				<img style="width: 50px;" id="corporateCreditImgPlay" alt="商品列表图片" src="">
+                    <button type="button" class="layui-btn" id="corporateCreditImgFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
+                </div>
 				</div>
 			</div>
 
@@ -127,9 +133,67 @@
 	<script type="text/javascript" src="../../js/common.js"></script>
 	<script type="text/javascript" src="../../layui/layui.js"></script>
 	<script type="text/javascript">
-		layui.use(['layer','laydate'], function(){
-		    var layer = layui.layer;
-		});
+	
+	
+	
+	
+	
+	
+	
+	
+		
+		
+		 layui.use('upload', function(){
+		        var upload = layui.upload;
+		
+		//上传图片
+	    var uploadInst = upload.render({
+	      elem: '#corporateCreditImgFile' //绑定元素
+	      ,url: '/upOssFile/' //上传接口
+	      ,data: {
+	          path:'company'
+	      },
+	      accept: 'image',
+	      acceptMime:'image/*',
+	      before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+	          layer.load(); //上传loading
+	      }
+	      ,done: function(res){
+	        //假设code=0代表上传成功
+	          if(res.code == 0){
+	            //do something （比如将res返回的图片链接保存到表单的隐藏域）
+	            $("#corporateCreditImg").val("http://img.huayuechina.cn/"+res.url);
+	            $('#corporateCreditImgPlay').attr("src","http://img.huayuechina.cn/"+res.url);
+	          }
+	          layer.closeAll('loading'); //关闭loading
+	      }
+	      ,error: function(){
+	          layer.closeAll('loading'); //关闭loading
+	      }
+	    });
+		
+		
+		
+		
+		
+		
+ });
+		
+		
+		
+		
+	   
+	    
+		
+		
+		
+		
+		 layui.use(['layer','laydate'], function(){
+			    var layer = layui.layer;
+			});
+			
+		
+		
 		
 		function add() {
 			$('#form').bootstrapValidator();
