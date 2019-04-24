@@ -165,6 +165,12 @@
 			<artifactId>aliyun-sdk-mns</artifactId>
 			<version>1.1.8</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
     </dependencies>
 
 
