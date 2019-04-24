@@ -73,31 +73,51 @@
 			<div class='form-group'>
 				<label class='col-md-2 control-label'>法人身份证正面</label>
 				<div class='col-md-10'>
-					<input class='form-control' placeholder='idFrontImg' type='text' name='idFrontImg' id='idFrontImg' value='' data-bv-notempty='true' data-bv-notempty-message='法人身份证正面 不能为空'>
+					<input  type="hidden" class='form-control' placeholder='idFrontImg' type='text' name='idFrontImg' id='idFrontImg' value='' data-bv-notempty='true' data-bv-notempty-message='法人身份证正面 不能为空'>
+					<img style="width: 50px;" id="idFrontImgPlay" alt="商品列表图片" src="">
+                    <button type="button" class="layui-btn" id="idFrontImgFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
 				</div>
 			</div>
 			<div class='form-group'>
 				<label class='col-md-2 control-label'>法人身份证反面</label>
 				<div class='col-md-10'>
-					<input class='form-control' placeholder='idBackImg' type='text' name='idBackImg' id='idBackImg' value='' data-bv-notempty='true' data-bv-notempty-message='法人身份证反面 不能为空'>
+					<input  type="hidden" class='form-control' placeholder='idBackImg' type='text' name='idBackImg' id='idBackImg' value='' data-bv-notempty='true' data-bv-notempty-message='法人身份证反面 不能为空'>
+					<img style="width: 50px;" id="idBackImgPlay" alt="商品列表图片" src="">
+                    <button type="button" class="layui-btn" id="idBackImgFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
 				</div>
 			</div>
 			<div class='form-group'>
 				<label class='col-md-2 control-label'>供应商营业执照(三证合一)</label>
 				<div class='col-md-10'>
-					<input class='form-control' placeholder='tradingCertificateImg' type='text' name='tradingCertificateImg' id='tradingCertificateImg' value='' data-bv-notempty='true' data-bv-notempty-message='供应商营业执照(三证合一) 不能为空'>
+					<input  type="hidden" class='form-control' placeholder='tradingCertificateImg' type='text' name='tradingCertificateImg' id='tradingCertificateImg' value='' data-bv-notempty='true' data-bv-notempty-message='供应商营业执照(三证合一) 不能为空'>
+					<img style="width: 50px;" id="tradingCertificateImgPlay" alt="商品列表图片" src="">
+                    <button type="button" class="layui-btn" id="tradingCertificateImgFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
 				</div>
 			</div>
 			<div class='form-group'>
 				<label class='col-md-2 control-label'>开户许可证</label>
 				<div class='col-md-10'>
-					<input class='form-control' placeholder='openAccountImg' type='text' name='openAccountImg' id='openAccountImg' value='' data-bv-notempty='true' data-bv-notempty-message='开户许可证 不能为空'>
+					<input  type="hidden" class='form-control' placeholder='openAccountImg' type='text' name='openAccountImg' id='openAccountImg' value='' data-bv-notempty='true' data-bv-notempty-message='开户许可证 不能为空'>
+					<img style="width: 50px;" id="openAccountImgPlay" alt="商品列表图片" src="">
+                    <button type="button" class="layui-btn" id="openAccountImgFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
 				</div>
 			</div>
 			<div class='form-group'>
 				<label class='col-md-2 control-label'>企业征信报告</label>
 				<div class='col-md-10'>
-					<input class='form-control' placeholder='enterpriseCreditImg' type='text' name='enterpriseCreditImg' id='enterpriseCreditImg' value='' data-bv-notempty='true' data-bv-notempty-message='企业征信报告 不能为空'>
+					<input  type="hidden" class='form-control' placeholder='enterpriseCreditImg' type='text' name='enterpriseCreditImg' id='enterpriseCreditImg' value='' data-bv-notempty='true' data-bv-notempty-message='企业征信报告 不能为空'>
+					<img style="width: 50px;" id="enterpriseCreditImgPlay" alt="商品列表图片" src="">
+                    <button type="button" class="layui-btn" id="enterpriseCreditImgFile">
+                      <i class="layui-icon">&#xe67c;</i>上传图片
+                    </button>
 				</div>
 			</div>
 			<div class='form-group'>
@@ -109,10 +129,7 @@
                       <i class="layui-icon">&#xe67c;</i>上传图片
                     </button>
                 </div>
-				</div>
 			</div>
-
-
 			<div class="form-actions">
 				<div class="row" align="center">
 					<div class="col-md-12">
@@ -123,7 +140,6 @@
 					</div>
 				</div>
 			</div>
-
 		</fieldset>
 	</form>
 </div>
@@ -146,7 +162,141 @@
 		 layui.use('upload', function(){
 		        var upload = layui.upload;
 		
-		//上传图片
+		        
+        var uploadInst = upload.render({
+		      elem: '#idFrontImgFile' //绑定元素
+		      ,url: '/upOssFile/' //上传接口
+		      ,data: {
+		          path:'company'
+		      },
+		      accept: 'image',
+		      acceptMime:'image/*',
+		      before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+		          layer.load(); //上传loading
+		      }
+		      ,done: function(res){
+		        //假设code=0代表上传成功
+		          if(res.code == 0){
+		            //do something （比如将res返回的图片链接保存到表单的隐藏域）
+		            $("#idFrontImg").val("http://img.huayuechina.cn/"+res.url);
+		            $('#idFrontImgPlay').attr("src","http://img.huayuechina.cn/"+res.url);
+		          }
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		      ,error: function(){
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		    });
+
+		
+		        
+        var uploadInst = upload.render({
+		      elem: '#idBackImgFile' //绑定元素
+		      ,url: '/upOssFile/' //上传接口
+		      ,data: {
+		          path:'company'
+		      },
+		      accept: 'image',
+		      acceptMime:'image/*',
+		      before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+		          layer.load(); //上传loading
+		      }
+		      ,done: function(res){
+		        //假设code=0代表上传成功
+		          if(res.code == 0){
+		            //do something （比如将res返回的图片链接保存到表单的隐藏域）
+		            $("#idBackImg").val("http://img.huayuechina.cn/"+res.url);
+		            $('#idBackImgPlay').attr("src","http://img.huayuechina.cn/"+res.url);
+		          }
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		      ,error: function(){
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		    }); 
+        
+        
+        var uploadInst = upload.render({
+		      elem: '#tradingCertificateImgFile' //绑定元素
+		      ,url: '/upOssFile/' //上传接口
+		      ,data: {
+		          path:'company'
+		      },
+		      accept: 'image',
+		      acceptMime:'image/*',
+		      before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+		          layer.load(); //上传loading
+		      }
+		      ,done: function(res){
+		        //假设code=0代表上传成功
+		          if(res.code == 0){
+		            //do something （比如将res返回的图片链接保存到表单的隐藏域）
+		            $("#tradingCertificateImg").val("http://img.huayuechina.cn/"+res.url);
+		            $('#tradingCertificateImgPlay').attr("src","http://img.huayuechina.cn/"+res.url);
+		          }
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		      ,error: function(){
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		    });
+		
+        var uploadInst = upload.render({
+		      elem: '#openAccountImgFile' //绑定元素
+		      ,url: '/upOssFile/' //上传接口
+		      ,data: {
+		          path:'company'
+		      },
+		      accept: 'image',
+		      acceptMime:'image/*',
+		      before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+		          layer.load(); //上传loading
+		      }
+		      ,done: function(res){
+		        //假设code=0代表上传成功
+		          if(res.code == 0){
+		            //do something （比如将res返回的图片链接保存到表单的隐藏域）
+		            $("#openAccountImg").val("http://img.huayuechina.cn/"+res.url);
+		            $('#openAccountImgPlay').attr("src","http://img.huayuechina.cn/"+res.url);
+		          }
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		      ,error: function(){
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		    });
+        
+        
+        
+	    var uploadInst = upload.render({
+		      elem: '#enterpriseCreditImgFile' //绑定元素
+		      ,url: '/upOssFile/' //上传接口
+		      ,data: {
+		          path:'company'
+		      },
+		      accept: 'image',
+		      acceptMime:'image/*',
+		      before: function(obj){ //obj参数包含的信息，跟 choose回调完全一致，可参见上文。
+		          layer.load(); //上传loading
+		      }
+		      ,done: function(res){
+		        //假设code=0代表上传成功
+		          if(res.code == 0){
+		            //do something （比如将res返回的图片链接保存到表单的隐藏域）
+		            $("#enterpriseCreditImg").val("http://img.huayuechina.cn/"+res.url);
+		            $('#enterpriseCreditImgPlay').attr("src","http://img.huayuechina.cn/"+res.url);
+		          }
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		      ,error: function(){
+		          layer.closeAll('loading'); //关闭loading
+		      }
+		    });
+		
+	    
+		
+		
+	  //上传图片
 	    var uploadInst = upload.render({
 	      elem: '#corporateCreditImgFile' //绑定元素
 	      ,url: '/upOssFile/' //上传接口
@@ -171,12 +321,7 @@
 	          layer.closeAll('loading'); //关闭loading
 	      }
 	    });
-		
-		
-		
-		
-		
-		
+	    
  });
 		
 		
